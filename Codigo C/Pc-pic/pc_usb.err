@@ -1,0 +1,5 @@
+>>> Warning 203 "C:\Users\owner\Downloads\Proyecto Fase 1\Proyecto Fase 1\Codigo C Pic\pic18_usb.c" Line 531(1,1): Condition always TRUE
+>>> Warning 216 "pc_usb.c" Line 73(0,1): Interrupts disabled during call to prevent re-entrancy:  (usb_token_reset)
+>>> Warning 216 "pc_usb.c" Line 73(0,1): Interrupts disabled during call to prevent re-entrancy:  (usb_flush_out)
+      Memory usage:   ROM=13%      RAM=14% - 15%
+      0 Errors,  3 Warnings.

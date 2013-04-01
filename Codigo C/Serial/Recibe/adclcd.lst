@@ -1,0 +1,254 @@
+CCS PCH C Compiler, Version 4.108, 18251               30-may-11 20:36
+
+               Filename: C:\Users\owner\Elias Respaldo\Interfaces\Practicas\interfaces final\Comunicacion Serial 2 Pics\Recibe\adclcd.lst
+
+               ROM used: 438 bytes (1%)
+                         Largest free fragment is 30280
+               RAM used: 26 (1%) at main() level
+                         28 (1%) worst case
+               Stack:    2 worst case (1 in main + 1 for interrupts)
+
+*
+0800:  GOTO   091E
+*
+0808:  MOVWF  04
+080A:  MOVFF  FD8,05
+080E:  MOVFF  FE0,06
+0812:  MOVLB  0
+0814:  MOVFF  FE9,0C
+0818:  MOVFF  FEA,07
+081C:  MOVFF  FE1,08
+0820:  MOVFF  FE2,09
+0824:  MOVFF  FD9,0A
+0828:  MOVFF  FDA,0B
+082C:  MOVFF  FF3,12
+0830:  MOVFF  FF4,13
+0834:  MOVFF  FFA,14
+0838:  MOVFF  FF5,15
+083C:  MOVFF  FF6,16
+0840:  MOVFF  FF7,17
+0844:  MOVFF  00,0E
+0848:  MOVFF  01,0F
+084C:  MOVFF  02,10
+0850:  MOVFF  03,11
+0854:  BTFSS  F9D.5
+0856:  GOTO   0860
+085A:  BTFSC  F9E.5
+085C:  GOTO   08AE
+0860:  MOVFF  0E,00
+0864:  MOVFF  0F,01
+0868:  MOVFF  10,02
+086C:  MOVFF  11,03
+0870:  MOVFF  0C,FE9
+0874:  MOVFF  07,FEA
+0878:  BSF    07.7
+087A:  MOVFF  08,FE1
+087E:  MOVFF  09,FE2
+0882:  MOVFF  0A,FD9
+0886:  MOVFF  0B,FDA
+088A:  MOVFF  12,FF3
+088E:  MOVFF  13,FF4
+0892:  MOVFF  14,FFA
+0896:  MOVFF  15,FF5
+089A:  MOVFF  16,FF6
+089E:  MOVFF  17,FF7
+08A2:  MOVF   04,W
+08A4:  MOVFF  06,FE0
+08A8:  MOVFF  05,FD8
+08AC:  RETFIE 0
+.................... #include "adclcd.h" 
+.................... #include <18F4550.h> 
+.................... //////// Standard Header file for the PIC18F4550 device //////////////// 
+.................... #device PIC18F4550 
+.................... #list 
+....................  
+.................... #device adc=8 
+....................  
+.................... #FUSES NOWDT                 	//No Watch Dog Timer 
+.................... #FUSES WDT128                	//Watch Dog Timer uses 1:128 Postscale 
+.................... #FUSES HS                    	//High speed Osc (> 4mhz for PCM/PCH) (>10mhz for PCD) 
+.................... #FUSES NOPROTECT             	//Code not protected from reading 
+.................... #FUSES NOBROWNOUT            	//No brownout reset 
+.................... #FUSES BORV20                	//Brownout reset at 2.0V 
+.................... #FUSES NOPUT                 	//No Power Up Timer 
+.................... #FUSES NOCPD                 	//No EE protection 
+.................... #FUSES STVREN                	//Stack full/underflow will cause reset 
+.................... #FUSES NODEBUG               	//No Debug mode for ICD 
+.................... #FUSES NOLVP                 	//No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
+.................... #FUSES NOWRT                 	//Program memory not write protected 
+.................... #FUSES NOWRTD                	//Data EEPROM not write protected 
+.................... #FUSES IESO                  	//Internal External Switch Over mode enabled 
+.................... #FUSES FCMEN                 	//Fail-safe clock monitor enabled 
+.................... #FUSES PBADEN                	//PORTB pins are configured as analog input channels on RESET 
+.................... #FUSES NOWRTC                	//configuration not registers write protected 
+.................... #FUSES NOWRTB                	//Boot block not write protected 
+.................... #FUSES NOEBTR                	//Memory not protected from table reads 
+.................... #FUSES NOEBTRB               	//Boot block not protected from table reads 
+.................... #FUSES NOCPB                 	//No Boot Block code protection 
+.................... #FUSES MCLR                  	//Master Clear pin enabled 
+.................... #FUSES LPT1OSC               	//Timer1 configured for low-power operation 
+.................... #FUSES NOXINST               	//Extended set extension and Indexed Addressing mode disabled (Legacy mode) 
+.................... #FUSES PLL12                 	//Divide By 12(48MHz oscillator input) 
+.................... #FUSES CPUDIV4               	//System Clock by 4 
+.................... #FUSES USBDIV                	//USB clock source comes from PLL divide by 2 
+.................... #FUSES VREGEN                	//USB voltage regulator enabled 
+.................... #FUSES ICPRT                 	//ICPRT enabled 
+....................  
+.................... #use delay(crystal=20000000,  clock=5000000) 
+08F6:  CLRF   FEA
+08F8:  MOVLW  1A
+08FA:  MOVWF  FE9
+08FC:  MOVF   FEF,W
+08FE:  BZ    091A
+0900:  MOVLW  01
+0902:  MOVWF  01
+0904:  CLRF   00
+0906:  DECFSZ 00,F
+0908:  BRA    0906
+090A:  DECFSZ 01,F
+090C:  BRA    0904
+090E:  MOVLW  9E
+0910:  MOVWF  00
+0912:  DECFSZ 00,F
+0914:  BRA    0912
+0916:  DECFSZ FEF,F
+0918:  BRA    0900
+091A:  GOTO   09B4 (RETURN)
+....................  
+....................  
+.................... int sre = 0;  
+.................... //Variables para desplegar el dato recibido  
+.................... #use rs232(baud=9600, xmit=pin_c6,rcv=pin_c7,parity=N) 
+.................... //Directiva para el uso del puerto serie  
+....................  
+....................  
+.................... #build(reset=0x800) 
+.................... #build(interrupt=0x808) 
+.................... #org 0x0000, 0x07ff void bootloader() {} 
+*
+0000:  RETLW  00
+....................  
+....................  
+.................... #int_RDA  
+.................... RDA_isr() //Vector de subrutina de servicio 
+.................... { sre = getc (); 
+*
+08AE:  BTFSS  F9E.5
+08B0:  BRA    08AE
+08B2:  MOVFF  FAE,19
+.................... //Guarda el valor del dato recibido  
+.................... return sre; 
+08B6:  MOVFF  19,01
+.................... //Regresa el valor del dato recibido  
+.................... }  
+08BA:  BCF    F9E.5
+08BC:  GOTO   0860
+.................... void main()  
+.................... {  
+*
+091E:  CLRF   FF8
+0920:  BCF    FD0.7
+0922:  BSF    07.7
+0924:  CLRF   FEA
+0926:  CLRF   FE9
+0928:  CLRF   19
+092A:  BSF    FB8.3
+092C:  MOVLW  81
+092E:  MOVWF  FAF
+0930:  MOVLW  00
+0932:  MOVWF  FB0
+0934:  MOVLW  A6
+0936:  MOVWF  FAC
+0938:  MOVLW  90
+093A:  MOVWF  FAB
+093C:  MOVF   FC1,W
+093E:  ANDLW  C0
+0940:  IORLW  0F
+0942:  MOVWF  FC1
+0944:  MOVLW  07
+0946:  MOVWF  FB4
+.................... setup_adc_ports(NO_ANALOGS|VSS_VDD);  
+0948:  MOVF   FC1,W
+094A:  ANDLW  C0
+094C:  IORLW  0F
+094E:  MOVWF  FC1
+.................... //setup_adc(ADC_OFF|ADC_TAD_MUL_0);  
+.................... setup_psp(PSP_DISABLED);  
+0950:  BCF    F96.4
+.................... setup_spi(FALSE); setup_wdt(WDT_OFF);  
+0952:  CLRF   FC6
+0954:  BCF    FD1.0
+.................... setup_timer_0(RTCC_INTERNAL);  
+0956:  MOVLW  80
+0958:  MOVWF  FD5
+.................... setup_timer_1(T1_DISABLED);  
+095A:  CLRF   FCD
+.................... setup_timer_2(T2_DISABLED,0,1);  
+095C:  MOVLW  00
+095E:  MOVWF  FCA
+0960:  MOVLW  00
+0962:  MOVWF  FCB
+.................... setup_comparator(NC_NC_NC_NC);  
+0964:  MOVLW  07
+0966:  MOVWF  FB4
+0968:  MOVF   F92,W
+096A:  MOVWF  F92
+096C:  MOVLW  03
+096E:  MOVWF  00
+0970:  DECFSZ 00,F
+0972:  BRA    0970
+0974:  BRA    0976
+0976:  MOVF   FB4,W
+0978:  BCF    FA1.6
+.................... setup_vref(FALSE); enable_interrupts(INT_RDA); enable_interrupts(GLOBAL);  
+097A:  CLRF   FB5
+097C:  BSF    F9D.5
+097E:  MOVLW  C0
+0980:  IORWF  FF2,F
+.................... setup_oscillator(OSC_8MHZ|OSC_TIMER1|OSC_31250|OSC_PLL_OFF);  
+0982:  MOVLW  71
+0984:  MOVWF  FD3
+0986:  MOVLW  80
+0988:  MOVWF  F9B
+098A:  MOVF   FD3,W
+....................  
+.................... set_uart_speed (9600); //Configura la velocidad de transferencia  
+098C:  BSF    FB8.3
+098E:  MOVLW  81
+0990:  MOVWF  FAF
+0992:  MOVLW  00
+0994:  MOVWF  FB0
+0996:  MOVLW  A6
+0998:  MOVWF  FAC
+.................... set_tris_d (0x00); //Configura el puerto D como salida  
+099A:  MOVLW  00
+099C:  MOVWF  F95
+.................... printf("Conexion Exitosa"); //Envia una cadena de caracteres para comprobar conexion  
+099E:  MOVLW  C0
+09A0:  MOVWF  FF6
+09A2:  MOVLW  08
+09A4:  MOVWF  FF7
+09A6:  BRA    08D2
+....................  
+.................... while (1) {  
+....................    output_D(sre); // Se pone en 1 el bit 7 del puerto D para el control de los displays 
+09A8:  CLRF   F95
+09AA:  MOVFF  19,F8C
+....................    delay_ms(25); //Retardo de 25 mS  
+09AE:  MOVLW  19
+09B0:  MOVWF  1A
+09B2:  BRA    08F6
+....................    
+.................... }  
+09B4:  BRA    09A8
+.................... } 
+09B6:  SLEEP 
+
+Configuration Fuses:
+   Word  1: CC3C   IESO FCMEN HS PLL5 CPUDIV4 USBDIV
+   Word  2: 0E39   NOBROWNOUT WDT128 NOWDT BORV20 NOPUT VREGEN
+   Word  3: 8700   PBADEN CCP2C1 MCLR LPT1OSC
+   Word  4: 00A1   STVREN NODEBUG NOLVP NOXINST ICPRT
+   Word  5: C00F   NOPROTECT NOCPD NOCPB
+   Word  6: E00F   NOWRT NOWRTD NOWRTC NOWRTB
+   Word  7: 400F   NOEBTR NOEBTRB

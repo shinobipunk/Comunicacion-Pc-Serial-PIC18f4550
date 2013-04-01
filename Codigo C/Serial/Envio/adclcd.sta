@@ -1,0 +1,57 @@
+
+ROM used: 838 (3%)
+          2888 (9%) including unused fragments
+
+          1 Average locations per line
+          12 Average locations per statement
+
+RAM used: 8 (0%) at main() level
+          21 (1%) worst case
+
+Stack used: 6 worst case (out of 31 total available)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   52    23  33  adclcd.c
+   36     0   0  adclcd.h
+  422     0   0  18F4550.h
+  182    47  67  LCD416.c
+----- -----
+  692    70 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     38   2   1             @delay_ms1
+0     20   1   0             @const73
+0     24   1   1   134  2.2  lcd_send_nibble
+0     50   3   3   225  3.8  lcd_send_byte
+0     82   5   2   414  4.7  lcd_init
+0     54   3   3   321  5.5  lcd_gotoxy
+0     34   2   0             @goto10084
+0     74   4   1   338  4.7  lcd_putc
+0     10   1   0             @PUTCHARI_BIU_1
+0      2   0   0     3  0.0  bootloader
+0    204  12   1   586  4.2  MAIN
+0     40   2   3             @DIV88
+0    202  12   6             @PRINTF_D_90
+
+Program metrics:
+    Functions               7
+    Statements              70
+    Comments                150
+    Volume (V)              2993
+    Difficilty (D)          25.1
+    Effort to implement (E) 75252
+    Time to implement (T)   1 hours, 10 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   11
+    Maintainability (MI)    141
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-007FE     2  2046  
+00800-00806     4  4  
+00808-07FFE   832  29880  
+
+
+

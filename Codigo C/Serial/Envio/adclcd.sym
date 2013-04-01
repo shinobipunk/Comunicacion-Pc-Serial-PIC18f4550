@@ -1,0 +1,99 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     lcdline
+005     boton
+006     x
+007     @PRINTF_D_90.P1
+007     lcd_init.i
+007     MAIN.@SCRATCH1
+008     @PRINTF_D_90.P1
+008     lcd_init.@SCRATCH1
+009     @PRINTF_D_90.@SCRATCH1
+00A     @PRINTF_D_90.@SCRATCH2
+00B     @PRINTF_D_90.@SCRATCH3
+00C     @PRINTF_D_90.@SCRATCH4
+00D     @DIV88.P1
+00D     lcd_putc.c
+00E     @DIV88.P1
+00E     lcd_gotoxy.x
+00E     @delay_ms1.P1
+00F     lcd_gotoxy.y
+00F     @DIV88.@SCRATCH1
+010     lcd_gotoxy.address
+011     lcd_send_byte.address
+012     lcd_send_byte.n
+013     lcd_send_byte.@SCRATCH1
+014     lcd_send_nibble.n
+F83     PSP_DATA
+F83     lcd
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB-FBC CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE-FBF CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P1
+FE9-FEA @READ_PROGRAM_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P3
+FE9-FEA @READ_PACKED_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+081C  @delay_ms1
+0808  LCD_INIT_STRING
+0842  lcd_send_nibble
+085A  lcd_send_byte
+088C  lcd_init
+08DE  lcd_gotoxy
+0914  @goto10084
+0968  lcd_putc
+0936  @PUTCHARI_BIU_1
+0000  bootloader
+0A7C  MAIN
+0940  @DIV88
+09B2  @PRINTF_D_90
+0A7C  @cinit
+
+
+User Memory space: 
+
+User Memory space: 
+
+Project Directory:
+    C:\Users\owner\Elias Respaldo\Interfaces\final\Codigo C\Envio\
+
+Project Files:
+    adclcd.c
+    adclcd.h
+    18F4550.h
+    LCD416.c
+
+Units:
+    C:\Users\owner\Elias Respaldo\Interfaces\final\Codigo C\Envio\adclcd (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      adclcd.err
+    Ext Symbols: adclcd.esym
+    INHX32:      adclcd.hex
+    Symbols:     adclcd.sym
+    List:        adclcd.lst
+    Debug/COFF:  adclcd.cof
+    Project:     adclcd.PJT
+    Call Tree:   adclcd.tre
+    Statistics:  adclcd.sta

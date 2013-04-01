@@ -1,0 +1,50 @@
+
+ROM used: 438 (1%)
+          2488 (8%) including unused fragments
+
+          1 Average locations per line
+          21 Average locations per statement
+
+RAM used: 26 (1%) at main() level
+          28 (1%) worst case
+
+Stack used: 2 worst case (out of 31 total available)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   43    21 100  adclcd.c
+   36     0   0  adclcd.h
+  422     0   0  18F4550.h
+----- -----
+  501    21 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     40   5   1             @delay_ms1
+0      2   0   0     3  0.0  bootloader
+0     18   2   0    32  1.9  RDA_isr
+0    154  18   0   485  2.8  MAIN
+0     18   2   0   485  2.8  @const75
+0     36   4   2             @PSTRINGC_9600_31766_31767
+
+Program metrics:
+    Functions               4
+    Statements              21
+    Comments                110
+    Volume (V)              1257
+    Difficilty (D)          8.5
+    Effort to implement (E) 10687
+    Time to implement (T)   10 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    162
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-007FE     2  2046  
+00800-00806     4  4  
+00808-008AC   166  0  
+008AE-07FFE   266  30280  
+
+
+

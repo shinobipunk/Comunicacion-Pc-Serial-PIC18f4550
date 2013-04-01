@@ -1,0 +1,29 @@
+[PROJECT]
+Target=C:\Users\owner\Elias Respaldo\Interfaces\Practicas\Practicas\Adc Lcd\adclcd.hex
+Development_Mode=
+Processor_Text=PIC18F4550
+ToolSuite=CCS
+Processor=0x4550
+[C:\Users\owner\Elias Respaldo\Interfaces\Practicas\Practicas\Adc Lcd\adclcd]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+[mru-list]
+1=C:\Users\owner\Elias Respaldo\Interfaces\Practicas\Practicas\Adc Lcd\adclcd.c
+[Windows]
+0=0000 %S 0 0 796 451 3 0
+[Opened Files]
+1=adclcd.c
+2=
+3=
+4=
+[Target Data]
+OptionString=-p +FH
+FileList=C:\Documents and Settings\Interfaces\Escritorio\Comunicacion Serial 2 Pics\Recibe\adclcd.c
+[Units]
+Count=1
+1=adclcd.c (main)
+Link=0
